@@ -9,5 +9,4 @@ public class DemoElasticsearchApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoElasticsearchApplication.class, args);
 	}
-
 }

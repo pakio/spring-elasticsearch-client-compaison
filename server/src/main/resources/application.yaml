@@ -1,1 +1,6 @@
 spring:
+  elasticsearch:
+    host: localhost
+    port: 9200
+    https: false
+

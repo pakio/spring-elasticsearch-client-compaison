@@ -2,21 +2,29 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'base'
 }
 
 group = 'com.pakio'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+def elasticsearchVersion = '7.10.0'
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+	implementation('org.springframework.boot:spring-boot-starter-data-elasticsearch') {
+		exclude group: 'org.elasticsearch'
+		exclude group: 'org.elasticsearch.plugin'
+		exclude group: 'org.elasticsearch.client'
+	}
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client
-	compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '7.10.0'
+	implementation('org.elasticsearch:elasticsearch:' + elasticsearchVersion)
+	implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:' + elasticsearchVersion)
+	implementation('org.elasticsearch.client:elasticsearch-rest-client:' + elasticsearchVersion)
 }
 
 test {
