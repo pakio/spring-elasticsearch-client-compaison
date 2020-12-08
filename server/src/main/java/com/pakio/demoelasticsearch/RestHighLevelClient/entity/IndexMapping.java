@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IndexMapping {
+
   public static Map getIndexMapping() {
     Map<String, Object> jsonMap = new HashMap<>();
     Map<String, Object> message = new HashMap<>();
